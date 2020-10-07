@@ -64,7 +64,13 @@ function fetchStudents() {
     students = [];
   } else {
     students = JSON.parse(localStorage.getItem("students"));
-    counter.innerText = `${students.length} registered students`;
+    if (students.length <= 1) {
+
+      counter.innerText = `${students.length} registered student`;
+    } else {
+      counter.innerText = `${students.length} registered students`;
+
+    }
   }
   return students;
 }
