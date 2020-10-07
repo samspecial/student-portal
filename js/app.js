@@ -73,4 +73,5 @@ function resetField() {
   studentEmail.value = "";
   studentGender.value = "";
   studentCourse.value = "";
+  studentName.focus();
 }
