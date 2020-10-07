@@ -6,7 +6,8 @@ const addStudentButton = document.querySelector("#btn");
 const studentList = document.querySelector("#studentDetails");
 const counter = document.querySelector("#count");
 
-addStudentButton.addEventListener("click", addNewStudent)
+addStudentButton.addEventListener("click", addNewStudent);
+document.addEventListener("DOMContentLoaded", displayStudentDetails)
 
 function addNewStudent(e) {
   e.preventDefault();
@@ -43,19 +44,11 @@ function addStudentToList(student) {
 }
 
 function storeStudentDetails(newStudent) {
-  let students = [];
-  if (localStorage.getItem("students") == null) {
-    students.push(newStudent);
-    localStorage.setItem("students", JSON.stringify(students));
-    alert("New Book Added Successfully");
-    location.reload();
-  } else {
-    students = JSON.parse(localStorage.getItem("students"));
-    students.push(newStudent);
-    localStorage.setItem("students", JSON.stringify(students));
-    alert("New Book Added Successfully");
-    location.reload();
-  }
+  let students = fetchStudents();
+  students.push(newStudent);
+  localStorage.setItem("students", JSON.stringify(students));
+  alert("New Student Added Successfully");
+  location.reload();
 }
 
 function fetchStudents() {
